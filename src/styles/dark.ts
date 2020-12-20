@@ -3,10 +3,10 @@ export default {
   
     colors: {
       primary: '#000',
-      secundary: '#8e2de2',
+      secundary: '#DFDFDF',
   
       background: '#000',
-      text: '#fff',
-      btns: '#fff',
+      text: '#DFDFDF',
+      btns: '#030303',
     },
   };

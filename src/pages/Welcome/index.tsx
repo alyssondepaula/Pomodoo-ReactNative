@@ -6,17 +6,19 @@ import student from '../../assets/student.gif';
 import studentBlack from '../../assets/studentBlack.gif';
 
 import { Container,Buttons, AnimationContainer, TextContainer, TextWelcome, TextButtons} from './styles';
-import LottieView from 'lottie-react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useWelcome } from '../../context/welcome';
+
 
 
 const Welcome: React.FC = () => {
 
+  const { toggleWelcome } = useWelcome();
   const {  toggleTema, darkMode  } = useTema();
-
-  console.log('Render')
-
-
   
+  const navigation = useNavigation();
+
+
   return (
     <Container>
 <AnimationContainer>
@@ -35,7 +37,7 @@ const Welcome: React.FC = () => {
        {"\n"}{"\n"}Boa Produtividade
      </TextWelcome>
        </TextContainer>
-      <Buttons onPress={() => toggleTema() }><TextButtons>Começar</TextButtons></Buttons>
+      <Buttons onPress={() => toggleWelcome() }><TextButtons>Começar</TextButtons></Buttons>
   
     </Container> 
   );

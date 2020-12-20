@@ -1,4 +1,7 @@
 import React, {createContext, useState, useEffect, useContext} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Alert } from 'react-native';
+
 
 interface Tema {
   temaNome: string,
@@ -7,14 +10,51 @@ interface Tema {
 }
 
 
+
 const TemaContext = createContext<Tema>({} as Tema);
 
 const TemaProvider: React.FC = ({children}) => {
+
   const [dark, setDark] = useState(false);
+
   const [temaNome, setTema] = useState('light');
+  
+  useEffect(()=>{
+ 
+        const getTheme = async () => {
+
+          try {
+            
+            const value = await AsyncStorage.getItem('@theme')
+            if(value !== null) {
+
+              value === 'light' ? setDark(false) : setDark(true)
+             
+            }else {
+              setDark(false)
+              try {
+                await AsyncStorage.setItem('@theme', 'light')
+              } catch (e) {
+                Alert.alert('Error database Set')
+              }
+            }
+          } catch(e) {
+             Alert.alert('Error database Read')
+          }
+        }
+
+
+        getTheme();
+  },[])
 
   const toggleTema =  async () => {
-    setDark(!dark)
+    
+    try {
+      await AsyncStorage.setItem('@theme',  dark == true ? 'light': 'dark')
+      setDark(!dark)
+    } catch (e) {
+      Alert.alert('Error database Set')
+    }
   }
   return (
     <TemaContext.Provider value={{ temaNome: temaNome, darkMode: dark, toggleTema }}>

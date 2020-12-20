@@ -9,6 +9,7 @@ import styles from './src/styles';
 import { AppearanceProvider } from 'react-native-appearance';
 
 import { TemaProvider, useTema } from './src/context/theme';
+import { WelcomeProvider } from './src/context/welcome';
 
 
 function ContentApp() {
@@ -35,7 +36,9 @@ export default function App() {
   return ( 
 
       <TemaProvider>
-     <ContentApp/>
-    </TemaProvider>
+             <WelcomeProvider>
+                 <ContentApp/>
+             </WelcomeProvider>
+     </TemaProvider>
   );
 }
