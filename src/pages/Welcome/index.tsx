@@ -1,25 +1,17 @@
 import React, {memo} from 'react';
 
-import { Text, View, FlatList } from 'react-native';
+import { Text, View, FlatList, Image } from 'react-native';
 import { useTema } from '../../context/theme';
-import books from '../../assets/books.json';
+import student from '../../assets/student.gif';
+import studentBlack from '../../assets/studentBlack.gif';
 
 import { Container,Buttons, AnimationContainer, TextContainer, TextWelcome, TextButtons} from './styles';
 import LottieView from 'lottie-react-native';
 
 
-
-
-
-
-
-
-
-
-
 const Welcome: React.FC = () => {
 
-  const {  toggleTema  } = useTema();
+  const {  toggleTema, darkMode  } = useTema();
 
   console.log('Render')
 
@@ -29,13 +21,9 @@ const Welcome: React.FC = () => {
     <Container>
 <AnimationContainer>
 
-<LottieView 
-      autoPlay={true}
-      loop={true}
-       style={{ flex:1, width: 500, height: 500 }}
-        source={books}
-        
-      />
+      <Image source={darkMode ? studentBlack : student} style={{margin: 25, padding: 250, width: 200, height: 200}}></Image>
+
+
         </AnimationContainer>
        <TextContainer>
      <TextWelcome>

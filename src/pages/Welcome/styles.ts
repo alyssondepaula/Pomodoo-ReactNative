@@ -45,6 +45,6 @@ export const AnimationContainer = styled.View`
     align-items: center;
     justify-content: center;
     flex: 1;
-    width: 100px;
-    height: 100px;
+    padding: 100px;
+
 `;
