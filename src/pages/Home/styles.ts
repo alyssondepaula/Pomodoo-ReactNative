@@ -16,6 +16,13 @@ export const TextDarkMode = styled.Text`
        
 `;
 
+export const TextTimeTo = styled.Text`
+       font-size: 18px;
+       color: ${props => props.theme.colors.secundary};
+       margin-top: 24px;
+       
+`;
+
 export const Header = styled.View`
        height: 10%;
        width: 100%;
@@ -28,5 +35,6 @@ export const Header = styled.View`
 export const Body = styled.View`
        display: flex;
        flex: 1;
-       background-color: red;
+       align-items: center;
+       padding-top: 20%;
 `;
